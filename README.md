@@ -1,2 +1,2 @@
 # intranet
-bremen hospital intranet design
+Bremen Hospital Intranet Design
