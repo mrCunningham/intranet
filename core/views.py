@@ -1,7 +1,7 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponse
 
-from .models import Department
+from .models import Department, Post
 
 def index(request):
 	department_list = Department.objects.all()
@@ -9,5 +9,8 @@ def index(request):
 
 	return render(request, 'core/index.html', context)
 
-def department(request, pk):
-	return HttpResponse("Hello From Department")
+def department(request, name):
+	dept = Department.objects.get(name=name).post_set.all()
+	context = { 'posts': dept }
+
+	return render(request, 'core/department.html', context)
