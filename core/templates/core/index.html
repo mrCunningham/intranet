@@ -1,25 +1,23 @@
 {% extends "core/base.html" %}
 
-<div class="row">
-    {% block sidebarLeft %}
-        {% if department_list %}
+{% block sidebarLeft %}
+    {% if department_list %}
+    <div class="col-md-2 sidebar">
+        <ul class="nav nav-tabs nav-stacked">
             {%for dept in department_list %}
-                <ol class="list-unstyled">
-                    <div class="col-sm-12 col-md-3">
-                        <li><a href="{% url 'detail' dept.name %}">{{dept.name}}</a></li>
-                    </div>
-                </ol>
+                <li><a href="{% url 'detail' dept.name %}">{{dept.name}}</a></li>
             {% endfor %}
-        {% endif %}
-    {% endblock sidebarLeft %}
+        </ul>
+    </div>
+    {% endif %}
+{% endblock sidebarLeft %}
 
 
-    {% block content %}
-        {# {%for post in posts%}
-        <div class="row">
-            <h1>{{ post.title }}</h1><br />
-            <p>{{ post.content }}</p>
-        </div>
-        {% endfor %}#}
-    {% endblock content %}
-</div>
+{% block content %}
+    {%for post in posts%}
+    <div class="row col-md-8">
+        <h1>{{ post.title }}</h1><br />
+        <p>{{ post.content }}</p>
+    </div>
+    {% endfor %}
+{% endblock content %}
